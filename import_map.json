@@ -1,5 +1,7 @@
 {
   "imports": {
+    "deco-sites/rtpresence-demo/": "./",
+
     "deco-sites/deco-bf/": "./",
 
     "$store/": "./",
