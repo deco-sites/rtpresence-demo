@@ -2,9 +2,6 @@ import { HandlerContext } from "$fresh/server.ts";
 
 const connections: Record<string, Promise<string>> = {};
 
-// interface DefaultConnectionState: {
-// }
-
 export const handler = async (
   req: Request,
   ctx: HandlerContext,
@@ -25,10 +22,12 @@ export const handler = async (
       currentCount = connections[page] + 1;
       connections[page] = currentCount;
     }
-    socket.send(currentCount);
+    socket.send(currentCount.toString());
   };
-  socket.onmessage = async (e) => {};
-  socket.onclose = () => {}
+  socket.onclose = () => {
+    currentCount = connections[page] - 1;
+      connections[page] = currentCount;
+  }
   socket.onerror = (e) => {}
   return response;
 };
