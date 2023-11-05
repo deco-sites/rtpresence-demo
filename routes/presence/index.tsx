@@ -1,3 +1,3 @@
-import { createPresenceHandler } from 'apps/presence/handlers/presenceRoom.ts'
+import { createPresenceHandler } from 'apps/presence/infra/presenceRoom.ts'
 
 export const handler = createPresenceHandler({});
